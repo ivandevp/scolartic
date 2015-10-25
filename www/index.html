@@ -28,24 +28,24 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <title>Scolartic</title>
     </head>
-    <body style="background: url('img/bg.png')">
-        <div class="app">
-            <h1>Scolartic</h1>
-            <div class="container">
+    <body>
+        <div class="app row">
+            <h2>REGISTRO DE PARTICIPANTES</h2>
+            <div class="container col-xs-8 col-xs-offset-2">
                 <form id="search-form" action="">
                     <div class="form-group">
-                        <select id="document-type" class="form-control" required>
+                        <select id="document-type" class="form-control fs-17 color-txt" required>
                             <option value="0" selected>Tipo de Documento</option>
                             <option value="1">DNI</option>
                             <option value="2">Carnet de Extranjería</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <input id="document-number" type="number" class="form-control" placeholder="Número de documento" required>
+                        <input id="document-number" type="number" class="form-control fs-17 color-txt" placeholder="Número de documento" required>
                     </div>
-                    <button id="search" class="btn btn-default">Buscar</button>
+                    <button id="search" class="btn btn-default fs-17">Buscar</button>
                 </form>
             </div>
             <div id="error" class="container hidden">
@@ -55,43 +55,43 @@
             </div>
             <div id="data" class="container hidden">
                 <div class="row">
-                    <div class="text-center text-primary">
+                    <div class=" col-xs-8 col-xs-offset-2 text-center text-primary mb-30 fs-17">
                         <label for="dni">DNI existente:</label>
                         <span><strong id="dni-searched"></strong></span>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-8">
-                        <p class="text-center lead">Asistencia Jueves 30/10</p>
+                    <div class="col-xs-4 col-xs-offset-4">
+                        <p class="text-center lead fs-14 pt-7">Asistencia Jueves 29/10</p>
                     </div>
-                    <div class="col-xs-4">
+                    <div class="col-xs-2">
                         <button id="btn-asist-jue" data-field="asistencia_jueves" class="btn btn-primary update-action">Asistir</button>
                         <span id="msg-asist-jue" class="bg-success">Asistió</span>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-8">
-                        <p class="text-center lead">Asistencia Viernes 30/10</p>
+                    <div class="col-xs-4 col-xs-offset-4">
+                        <p class="text-center lead fs-14 pt-7">Asistencia Viernes 30/10</p>
                     </div>
-                    <div class="col-xs-4">
+                    <div class="col-xs-2">
                         <button id="btn-asist-vie" data-field="asistencia_viernes" class="btn btn-primary update-action">Asistir</button>
                         <span id="msg-asist-vie" class="bg-success">Asistió</span>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-8">
-                        <p class="text-center lead">Entrega de Merchandising</p>
+                    <div class="col-xs-4 col-xs-offset-4">
+                        <p class="text-center lead fs-14 pt-7">Entrega de Merchandising</p>
                     </div>
-                    <div class="col-xs-4">
+                    <div class="col-xs-2">
                         <button id="btn-ent-mcd" data-field="entrega_merchandising" class="btn btn-primary update-action">Recibir</button>
                         <span id="msg-ent-mcd" class="bg-success">Recibió</span>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-8">
-                        <p class="text-center lead">Entrega de USB</p>
+                    <div class="col-xs-4 col-xs-offset-4">
+                        <p class="text-center lead fs-14 pt-7">Entrega de USB</p>
                     </div>
-                    <div class="col-xs-4">
+                    <div class="col-xs-2">
                         <button id="btn-ent-usb" data-field="entrega_usb" class="btn btn-primary update-action">Recibir</button>
                         <span id="msg-ent-usb" class="bg-success">Recibió</span>
                     </div>

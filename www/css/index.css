@@ -1,0 +1,49 @@
+.app{
+	background-size: cover;
+	width: 100%;
+	background-repeat-x: no-repeat;
+	background-repeat-y: no-repeat;
+/*	background: url('../img/fondo.png');*/
+	
+}
+
+.row{
+	margin:0;
+	padding: 0;
+}
+
+h2{
+	padding-top: 250px;
+	padding-bottom: 30px;
+	text-align: center;
+	color: #03A2B8;
+}
+
+body{
+	background-image: url('../img/fondo.png');
+}
+
+
+.btn{
+	width: 100%;
+	margin-bottom: 40px;
+}
+
+.mb-30{
+	margin-bottom: 30px;
+}
+
+.fs-17{
+	font-size: 17px;
+}
+
+.fs-14{
+	font-size: 14px;
+}
+.color-txt{
+	color: #03A2B8;
+}
+
+.pt-7{
+	padding-top: 7px;
+}
