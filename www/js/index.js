@@ -43,13 +43,50 @@ var app = {
             var document_number = $("#document-number").val();
             console.log(document_type);
             console.log(document_number);
-            if (document_type == 0) navigator.notification.alert("Debe seleccionar el tipo de documento", null, "Scolartic", "Entendido =)");
-            else if (document_number == 0) navigator.notification.alert("Debe ingresar el número de documento", null, "Scolartic", "Entendido =)");
+            if (document_type == 0) {
+                $("#document-type").parent().addClass("has-error");
+                navigator.notification.alert("Debe seleccionar el tipo de documento", null, "Scolartic", "Entendido =)");
+            }
+            else if (document_number == 0) {
+                $("#document-number").parent().addClass("has-error");
+                navigator.notification.alert("Debe ingresar el número de documento", null, "Scolartic", "Entendido =)");
+            }
             else {
                 console.log("jksasa");
                 var db = window.openDatabase("scolartic", "1.0", "Scolartic DB", 1000000);
                 console.log("jasjksa");
                 db.transaction(app.populateDB, app.errorDB, app.successDB);
+            }
+        });
+        $("#document-type").change(function(e) {
+            var document_type = $(this).val();
+            var parent_container = $(this).parent();
+            if (document_type == 0) {
+                if (!parent_container.hasClass("has-error")) $(this).parent().addClass("has-error");
+            } else {
+                if (parent_container.hasClass("has-error")) {
+                    parent_container.removeClass("has-error");
+                    parent_container.addClass("has-success");
+                } else {
+                    if (!parent_container.hasClass("has-success")) parent_container.addClass("has-success");
+                }
+            }
+        });
+        $("#document-number").keyup(function(e) {
+            var current_length = $(this).val().length;
+            var document_type = $("#document-type").val();
+            var parent_container = $(this).parent();
+            if (document_type == 1) {
+                if (current_length != 8) {
+                    if (!parent_container.hasClass("has-error")) parent_container.addClass("has-error");
+                }
+                else {
+                    if (parent_container.hasClass("has-error")) {
+                        parent_container.removeClass("has-error");
+                        parent_container.addClass("has-success");
+                    }
+                    else if (!parent_container.hasClass("has-success")) parent_container.addClass("has-success"); 
+                }
             }
         });
     },
@@ -58,14 +95,11 @@ var app = {
         tx.executeSql('CREATE TABLE IF NOT EXISTS scolartic_error (log)');
         tx.executeSql('SELECT * FROM scolartic', [], app.querySuccess, app.errorDB);
         tx.executeSql('SELECT * FROM scolartic_error', [], app.queryLogSuccess, app.errorDB);
-        console.log("jbjkasasklnsklf");
         
     },
     errorDB: function(err) {
         console.log(err);
-        console.log("erroooor!");
         tx.executeSql('INSERT INTO scolartic_error (log) VALUES (' + err.message + ')');
-        console.log(err.code);
     },
     successDB: function() {
         console.log("correctoooo!");
