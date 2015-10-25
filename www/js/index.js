@@ -33,17 +33,17 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+        app.receivedEvent();
     },
     // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        document.getElementById("search-form").addEventListener('submit', this.searchUser, false);
-    },
-    //
-    searchUser: function() {
-        var document_type = document.getElementById("document-type");
-        var document_number = document.getElementById("document-number").value;
-        if (document_type.value == 0) console.log(document_type.parentElement);
-        return false;
+    receivedEvent: function() {
+        $("#search-form").submit(function(e) {
+            var document_type = $("#document-type").val();
+            var document_number = $("#document-number").val();
+            console.log(document_type);
+            console.log(document_number);
+            if (document_type == 0) navigator.notification.alert("Debe seleccionar el tipo de documento", null, "Scolartic", "Entendido =)");
+            e.preventDefault();
+        });
     }
 };
