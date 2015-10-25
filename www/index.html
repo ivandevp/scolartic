@@ -53,30 +53,48 @@
                     <p>Error</p>
                 </div>
             </div>
-            <div class="container">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox">
-                        Asistencia Jueves 30/10
-                    </label>
+            <div id="data" class="container hidden">
+                <div class="row">
+                    <div class="text-center text-primary">
+                        <label for="dni">DNI existente:</label>
+                        <span><strong id="dni-searched"></strong></span>
+                    </div>
                 </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox">
-                        Asistencia Viernes 30/10
-                    </label>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <p class="text-center lead">Asistencia Jueves 30/10</p>
+                    </div>
+                    <div class="col-xs-4">
+                        <button id="btn-asist-jue" data-field="asistencia_jueves" class="btn btn-primary update-action">Asistir</button>
+                        <span id="msg-asist-jue" class="bg-success">Asistió</span>
+                    </div>
                 </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox">
-                        Entrega de Merchandising
-                    </label>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <p class="text-center lead">Asistencia Viernes 30/10</p>
+                    </div>
+                    <div class="col-xs-4">
+                        <button id="btn-asist-vie" data-field="asistencia_viernes" class="btn btn-primary update-action">Asistir</button>
+                        <span id="msg-asist-vie" class="bg-success">Asistió</span>
+                    </div>
                 </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox">
-                        Entrega de USB
-                    </label>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <p class="text-center lead">Entrega de Merchandising</p>
+                    </div>
+                    <div class="col-xs-4">
+                        <button id="btn-ent-mcd" data-field="entrega_merchandising" class="btn btn-primary update-action">Recibir</button>
+                        <span id="msg-ent-mcd" class="bg-success">Recibió</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <p class="text-center lead">Entrega de USB</p>
+                    </div>
+                    <div class="col-xs-4">
+                        <button id="btn-ent-usb" data-field="entrega_usb" class="btn btn-primary update-action">Recibir</button>
+                        <span id="msg-ent-usb" class="bg-success">Recibió</span>
+                    </div>
                 </div>
             </div>
         </div>
