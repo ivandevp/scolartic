@@ -51,13 +51,23 @@ var app = {
                 navigator.notification.alert("Debe ingresar el número de documento", null, "Scolartic", "Entendido =)");
             }
             else {
-                db = window.openDatabase("scolartic", "1.0", "Scolartic DB", 1000000);
-                db.transaction(function(tx) {
-                    tx.executeSql('CREATE TABLE IF NOT EXISTS scolartic (dni unique, asistencia_jueves, asistencia_viernes, entrega_merchandising, entrega_usb)');
-                    tx.executeSql('CREATE TABLE IF NOT EXISTS scolartic_error (log)');
-                    tx.executeSql('SELECT * FROM scolartic where dni = ?', [document_number], app.querySuccess, app.errorDB);
-                    tx.executeSql('SELECT * FROM scolartic_error', [], app.queryLogSuccess, app.errorDB);
-                }, app.errorDB, app.successDB);
+                if (document_type == 1 && document_number.length != 8) {
+                    $("#document-number").parent().addClass("has-error");  
+                    navigator.notification.alert("DNI debe tener 8 dígitos", null, "Scolartic", "Entendido =)");
+                } 
+                else if (document_type == 2 && document_number.length != 12) {
+                    $("#document_number").parent().addClass("has-error");
+                    navigator.notification.alert("Carnet de extranjería debe tener 12 dígitos", null, "Scolartic", "Entendido =)");
+                } 
+                else {
+                    db = window.openDatabase("scolartic", "1.0", "Scolartic DB", 1000000);
+                    db.transaction(function(tx) {
+                        tx.executeSql('CREATE TABLE IF NOT EXISTS scolartic (dni unique, asistencia_jueves, asistencia_viernes, entrega_merchandising, entrega_usb)');
+                        tx.executeSql('CREATE TABLE IF NOT EXISTS scolartic_error (log)');
+                        tx.executeSql('SELECT * FROM scolartic where dni = ?', [document_number], app.querySuccess, app.errorDB);
+                        tx.executeSql('SELECT * FROM scolartic_error', [], app.queryLogSuccess, app.errorDB);
+                    }, app.errorDB, app.successDB);
+                }
             }
         });
         $("#document-type").change(function(e) {
@@ -72,7 +82,16 @@ var app = {
                 } else {
                     if (!parent_container.hasClass("has-success")) parent_container.addClass("has-success");
                 }
+                if (document_type == 1) {
+                    $("#document-number").attr("max-length", 8);
+                    $("#document-number").attr("min-length", 8);
+                } else if (document_type == 2) {
+                    $("#document-number").attr("max-length", 12);
+                    $("#document-number").attr("min-length", 12);
+                }
             }
+            console.log($("#document-number").attr("max-length"));
+            console.log($("#document-number").attr("min-length"));
         });
         $("#document-number").keyup(function(e) {
             var current_length = $(this).val().length;
