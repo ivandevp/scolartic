@@ -12,15 +12,15 @@
 	padding: 0;
 }
 
-h2{
-	padding-top: 250px;
+h3{
+	padding-top: 180px;
 	padding-bottom: 30px;
 	text-align: center;
 	color: #03A2B8;
 }
 
 body{
-	background-image: url('../img/790x1250.jpg');
+	background-image: url('../img/600x900.jpg');
 }
 
 select, input{
@@ -39,14 +39,14 @@ select, input{
 	margin-bottom: 30px !important;
 }
 
+.fs-22{
+	font-size: 22px !important;
+}
 .fs-23{
 	font-size: 23px !important;
 }
-.fs-25{
-	font-size: 25px !important;
-}
-.fs-28{
-	font-size: 28px !important;
+.fs-26{
+	font-size: 26px !important;
 }
 
 .color-txt{
