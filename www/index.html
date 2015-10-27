@@ -33,19 +33,19 @@
     <body>
         <div class="app row">
             <h2>REGISTRO DE PARTICIPANTES</h2>
-            <div class="container col-xs-8 col-xs-offset-2">
+            <div class="container col-xs-10 col-xs-offset-1">
                 <form id="search-form" action="">
                     <div class="form-group">
-                        <select id="document-type" class="form-control fs-17 color-txt" required>
+                        <select id="document-type" class="form-control fs-20 color-txt" required>
                             <option value="0" selected>Tipo de Documento</option>
                             <option value="1">DNI</option>
                             <option value="2">Carnet de Extranjería</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <input id="document-number" type="number" class="form-control fs-17 color-txt" placeholder="Número de documento" required>
+                        <input id="document-number" type="number" class="form-control fs-20 color-txt" placeholder="Número de documento" required>
                     </div>
-                    <button id="search" class="btn btn-default btn-buscar fs-17">Buscar</button>
+                    <button id="search" class="btn btn-default btn-buscar fs-20">Buscar</button>
                 </form>
             </div>
             <div id="error" class="container hidden">
@@ -55,8 +55,8 @@
             </div>
             <div id="data" class="container hidden">
                 <div class="row">
-                    <div class=" col-xs-8 col-xs-offset-2 text-center text-primary mb-30 fs-17">
-                        <label for="dni">uSUARIO:</label>
+                    <div class=" col-xs-8 col-xs-offset-2 text-center text-primary mb-30 fs-20">
+                        <label for="dni">USUARIO:</label>
                         <span><strong id="dni-searched"></strong></span>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="col-xs-2">
                         <button id="btn-asist-jue" data-field="asistencia_jueves" class="btn btn-primary update-action">Asistir</button>
-                        <span id="msg-asist-jue" class="bg-success fs-17">Asistió</span>
+                        <span id="msg-asist-jue" class="bg-success fs-20">Asistió</span>
                     </div>
                 </div>
                 <div class="row">
@@ -75,7 +75,7 @@
                     </div>
                     <div class="col-xs-2">
                         <button id="btn-asist-vie" data-field="asistencia_viernes" class="btn btn-primary update-action">Asistir</button>
-                        <span id="msg-asist-vie" class="bg-success fs-17">Asistió</span>
+                        <span id="msg-asist-vie" class="bg-success fs-20">Asistió</span>
                     </div>
                 </div>
                 <div class="row">
@@ -84,7 +84,7 @@
                     </div>
                     <div class="col-xs-2">
                         <button id="btn-ent-mcd" data-field="entrega_merchandising" class="btn btn-primary update-action">Recibir</button>
-                        <span id="msg-ent-mcd" class="bg-success fs-17">Recibió</span>
+                        <span id="msg-ent-mcd" class="bg-success fs-20">Recibió</span>
                     </div>
                 </div>
                 <div class="row">
@@ -93,7 +93,7 @@
                     </div>
                     <div class="col-xs-2">
                         <button id="btn-ent-usb" data-field="entrega_usb" class="btn btn-primary update-action">Recibir</button>
-                        <span id="msg-ent-usb" class="bg-success fs-17">Recibió</span>
+                        <span id="msg-ent-usb" class="bg-success fs-20">Recibió</span>
                     </div>
                 </div>
             </div>

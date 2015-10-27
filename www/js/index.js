@@ -44,7 +44,7 @@ var app = {
             var document_number = $("#document-number").val();
             if (document_type == 0) {
                 $("#document-type").parent().addClass("has-error");
-                navigator.notification.alert("Debe seleccionar el tipo de documento", null, "Scolartic", "Entendido =)");
+                navigator.notification.alert("Debe seleccionar el tipo de documento", null, "Scolartic", "Entendido");
             }
             else if (document_number == 0) {
                 $("#document-number").parent().addClass("has-error");
