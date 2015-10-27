@@ -36,14 +36,14 @@ select, input{
 }
 
 .mb-30{
-	margin-bottom: 30px;
+	margin-bottom: 30px !important;
 }
 
 .fs-23{
-	font-size: 23px;
+	font-size: 23px !important;
 }
 .fs-28{
-	font-size: 28px;
+	font-size: 28px !important;
 }
 
 .color-txt{
