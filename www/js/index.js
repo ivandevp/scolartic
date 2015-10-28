@@ -54,11 +54,7 @@ var app = {
                 if (document_type == 1 && document_number.length != 8) {
                     $("#document-number").parent().addClass("has-error");  
                     navigator.notification.alert("DNI debe tener 8 dígitos", null, "Scolartic", "Entendido =)");
-                } 
-                else if (document_type == 2 && document_number.length != 12) {
-                    $("#document_number").parent().addClass("has-error");
-                    navigator.notification.alert("Carnet de extranjería debe tener 12 dígitos", null, "Scolartic", "Entendido =)");
-                } 
+                }
                 else {
                     db = window.openDatabase("scolartic", "1.0", "Scolartic DB", 1000000);
                     db.transaction(function(tx) {
@@ -85,9 +81,6 @@ var app = {
                 if (document_type == 1) {
                     $("#document-number").attr("max-length", 8);
                     $("#document-number").attr("min-length", 8);
-                } else if (document_type == 2) {
-                    $("#document-number").attr("max-length", 12);
-                    $("#document-number").attr("min-length", 12);
                 }
             }
             console.log($("#document-number").attr("max-length"));
