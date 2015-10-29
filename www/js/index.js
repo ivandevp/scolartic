@@ -40,6 +40,7 @@ var app = {
     receivedEvent: function() {
         $("#search-form").submit(function(e) {
             e.preventDefault();
+            console.log("probando persistencia de data en actualización de apk");
             var document_type = $("#document-type").val();
             var document_number = $("#document-number").val();
             if (document_type == 0) {
