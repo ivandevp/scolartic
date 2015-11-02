@@ -119,27 +119,38 @@ var app = {
         });
         $("#exportData").click(function(e) {
             e.preventDefault();
-            db = window.openDatabase("scolartic", "1.0", "Scolartic DB", 1000000);
-            db.transaction(function(tx, results) {
+            console.log("click");
+            if (db == null) { db = window.openDatabase("scolartic", "1.0", "Scolartic DB", 1000000); }
+            db.transaction(function(tx) {
+                console.log("conexion abierta");
                 tx.executeSql('SELECT * FROM scolartic', [], function(tx, results) {
+                    console.log("ejecutando select");
                     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+                        console.log("dentro del fileSystem");
                         fileSystem.root.getFile("scolartic_data.txt",
-                            {create: true, exclusive: false},
-                            function(fileEntry) {
-                                fileEntry.createWriter(function(writer) {
-                                    for (var i = results.rows.length - 1; i >= 0; i--) {
-                                        var text = results.rows.item(i).dni + ", " + results.rows.item(i).asistencia_jueves + ", " +
-                                        results.rows.item(i).asistencia_viernes + ", " + results.rows.item(i).entrega_merchandising + ", " +
-                                        results.rows.item(i).entrega_usb;
-                                        writer.write(text);
-                                    }
-                                    writer.onwriteend = function(evt) {
-                                        navigator.notification.alert("Terminó de exportar, busca el archivo scolartic_data.txt", null, "Scolartic", "Avisar!");
-                                    }
-                                }, fail);
-                            }, fail);
-                    }, fail);
-                }, fail);
+                        {create: true, exclusive: false},
+                        function(fileEntry) {
+                            console.log("fileEntry");
+                            fileEntry.createWriter(function(writer) {
+                                console.log("writer");
+                                var registry = "";
+                                for (var i = results.rows.length - 1; i >= 0; i--) {
+                                    registry += results.rows.item(i).dni + ", " + results.rows.item(i).asistencia_jueves + ", " +
+                                                    results.rows.item(i).asistencia_viernes + ", " + results.rows.item(i).entrega_merchandising + ", " +
+                                                    results.rows.item(i).entrega_usb + "\n";
+                                    
+                                }
+                                console.log(registry);
+                                writer.write(registry);
+                                writer.onwriteend = function(evt) {
+                                    console.log("terminóooo!!");
+                                    console.log(evt);
+                                    navigator.notification.alert("Exportación terminada", null, "Scolartic", "Genial =)");
+                                }
+                            }, app.fail);
+                        }, app.fail);
+                    }, app.fail);
+                }, app.fail);
             }, app.errorDB, app.successDB);
         });
     },
@@ -191,6 +202,7 @@ var app = {
         }
     },
     fail: function(error) {
+        console.log(error);
         navigator.notification.alert(error.message, null, "Scolartic", "Avisar!");
     }
 };
