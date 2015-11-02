@@ -40,7 +40,6 @@ var app = {
     receivedEvent: function() {
         $("#search-form").submit(function(e) {
             e.preventDefault();
-            console.log("probando persistencia de data en actualización de apk");
             var document_type = $("#document-type").val();
             var document_number = $("#document-number").val();
             if (document_type == 0) {
@@ -118,6 +117,31 @@ var app = {
             });
             
         });
+        $("#exportData").click(function(e) {
+            e.preventDefault();
+            db = window.openDatabase("scolartic", "1.0", "Scolartic DB", 1000000);
+            db.transaction(function(tx, results) {
+                tx.executeSql('SELECT * FROM scolartic', [], function(tx, results) {
+                    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+                        fileSystem.root.getFile("scolartic_data.txt",
+                            {create: true, exclusive: false},
+                            function(fileEntry) {
+                                fileEntry.createWriter(function(writer) {
+                                    for (var i = results.rows.length - 1; i >= 0; i--) {
+                                        var text = results.rows.item(i).dni + ", " + results.rows.item(i).asistencia_jueves + ", " +
+                                        results.rows.item(i).asistencia_viernes + ", " + results.rows.item(i).entrega_merchandising + ", " +
+                                        results.rows.item(i).entrega_usb;
+                                        writer.write(text);
+                                    }
+                                    writer.onwriteend = function(evt) {
+                                        navigator.notification.alert("Terminó de exportar, busca el archivo scolartic_data.txt", null, "Scolartic", "Avisar!");
+                                    }
+                                }, fail);
+                            }, fail);
+                    }, fail);
+                }, fail);
+            }, app.errorDB, app.successDB);
+        });
     },
     errorDB: function(err) {
         tx.executeSql('INSERT INTO scolartic_error (log) VALUES (' + err.message + ')');
@@ -165,5 +189,8 @@ var app = {
             if (!$(btn_id).hasClass("hidden")) $(btn_id).addClass("hidden");
             if ($(span_id).hasClass("hidden")) $(span_id).removeClass("hidden");
         }
+    },
+    fail: function(error) {
+        navigator.notification.alert(error.message, null, "Scolartic", "Avisar!");
     }
 };
